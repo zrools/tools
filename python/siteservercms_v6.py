@@ -39,9 +39,24 @@ def get_hmac(msg, key):
     return base64.b64encode(hmac.new(key, msg, digestmod=hashlib.sha256).digest())
 
 
+def b64_de_replace(txt):
+    txt = txt.replace('0secret0','')  # v6.x
+    txt = txt.replace('0add0','+').replace('0equals0','=').replace('0and0','&')
+    txt = txt.replace('0question0','?').replace('0quote0',"'").replace('0slash0','/')
+
+    return txt
+
+
 def base64_url_encode(msg):
     msg = msg.replace('=', '').replace('+', '-').replace('/', '_')
     return msg
+
+
+def base64_url_decode(msg):
+    msg = msg.replace('-', '+').replace('_', '/')
+    l = len(msg) % 4
+    msg = msg + '=' * l
+    return base64.b64decode(msg)
 
 
 def get_access_token(userid, username, key, iv):
