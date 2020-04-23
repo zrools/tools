@@ -4,6 +4,7 @@
 '''
 @  已测试通过版本： v11.4
 @  https://www.github.com/zrools/tools/python
+@  修改 oa_addr 后： python3 tongda_v11.4_rce_exp.py
 '''
 
 import requests, base64, re
