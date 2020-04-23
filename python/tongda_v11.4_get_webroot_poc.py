@@ -57,7 +57,7 @@ def get_path():
 def main():
     
     if not login():
-        print('login error.')
+        print('login failed.')
         return False
     
     web_path = get_path()

